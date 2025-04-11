@@ -4,19 +4,26 @@ const main = document.getElementsByTagName("main").item(0)
 // ==================================
 const URLMain = "https://fakestoreapi.com/products/"
 // const URLMain= null
-
+const mainProds= document.getElementById("mainProds");
 //URLS needed  
 // https://fakestoreapi.com/products 
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch 
 //encabezados
 
 
+//
+const ulMenu= document.getElementById("ulMenu");
+
+// un elemento copiado de bootstrap
+//<li><a class="dropdown-item" href="#">Something else here</a></li> 
+
 // Checate esta documentacion
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 
-function getData(){
+function getData(cat){
     const options= {"method":"GET"}; 
-    fetch(URLMain, options)
+    
+    fetch(URLMain+cat, options)
         .then((response) => {
             console.log(response);
             response.json().then((res) => {
@@ -38,9 +45,33 @@ function getData(){
 //type cors se le permite que se llama desde cualquier servidor
 // el cors es un servidor security aspect, so i can
 // MyOWnserver <-only > MyOWnAPI  (cloud) 
-getData();
+getData("");
+
+function getCategories(){
+    const options= {"method":"GET"}; 
+    fetch(URLMain+"categories/", options)
+        .then((response) => {
+            // console.log(response);
+            response.json().then((res) => {
+                console.log("categories: ",res);
+                res.forEach(cat => {
+                    ulMenu.insertAdjacentHTML("afterbegin",
+                    `<li><a class="dropdown-item" onclick="getData('category/${cat}')">${cat}</a></li> `
+                )});
+            });
+        })
+        .catch((err) => {
+            main.insertAdjacentHTML("beforeend",
+                `<div class="alert alert-danger" role="alert">
+            ${err.message}
+        </div>`);
+        });
+}//getCategories
+getCategories();
+
 
 function createCards(prods) {
+    mainProds.innerHTML="";
     //tooman 20 productos y los mandes a imprimir en tu main
     //puedo imprimir uno y despues mandar los demas y adjacentHTML
     // for (//inicio//condicion//contador)
@@ -53,7 +84,7 @@ function createCards(prods) {
         const modalId = `ExampleModal-${i}`; 
         
         console.log(prods[i].image)
-        main.insertAdjacentHTML("beforeend",
+        mainProds.insertAdjacentHTML("beforeend",
 
             `
         <div class="card" style="width: 18rem;">
