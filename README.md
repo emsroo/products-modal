@@ -2,7 +2,7 @@ This is a lesson about about how to implement the fetch API that provides a java
 
 The producs are shown with price and description in a template made by bootstrap.
 
-![image](.\productos\Screenshot 2025-04-11 153653.png)
+![image](https://github.com/emsroo/products-modal/blob/main/Screenshot%202025-04-11%20153653.png)
 
 ```
 function getData(){
