@@ -10,6 +10,8 @@ const mainProds= document.getElementById("mainProds");
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch 
 //encabezados
 
+// CODIFICACION DE URL  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
+// %20 o usa escape 
 
 //
 const ulMenu= document.getElementById("ulMenu");
@@ -56,7 +58,7 @@ function getCategories(){
                 console.log("categories: ",res);
                 res.forEach(cat => {
                     ulMenu.insertAdjacentHTML("afterbegin",
-                    `<li><a class="dropdown-item" onclick="getData('category/${cat}')">${cat}</a></li> `
+                    `<li><a class="dropdown-item" style="cursor:pointer;" onclick="getData('category/${escape(cat)}')">${cat}</a></li> `
                 )});
             });
         })
