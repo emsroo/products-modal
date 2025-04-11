@@ -8,10 +8,15 @@ const URLMain = "https://fakestoreapi.com/products/"
 //URLS needed  
 // https://fakestoreapi.com/products 
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch 
+//encabezados
 
-function getData() {
-    const options= {"method","GET"}
-    fetch(URLMain)
+
+// Checate esta documentacion
+// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
+function getData(){
+    const options= {"method":"GET"}; 
+    fetch(URLMain, options)
         .then((response) => {
             console.log(response);
             response.json().then((res) => {
