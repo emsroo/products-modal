@@ -1,3 +1,7 @@
+//ejercicios por hacer opcionales https://github.com/jcgeneration/EjerciciosJavascript 
+
+
+
 console.log("soy un script extern productos ")
 // Este elemento siempre regresa un array, la primer posicion del main de un array de 1x1
 const main = document.getElementsByTagName("main").item(0)
@@ -47,6 +51,8 @@ function getData(cat){
 //type cors se le permite que se llama desde cualquier servidor
 // el cors es un servidor security aspect, so i can
 // MyOWnserver <-only > MyOWnAPI  (cloud) 
+
+// ${(cat.replace("'","%27"))}
 getData("");
 
 function getCategories(){
